@@ -1,0 +1,25 @@
+{
+  "builders": [
+     {
+             "type": "docker",
+             "image": "images/ubuntu1404-jre8.tar",
+             "export_path": "images/ubuntu1404-artifactory.tar"
+     }
+ ],
+ "provisioners": [
+   {
+           "type": "ansible-local",
+           "playbook_file": "playbooks/artifactory.yml",
+            "role_paths": "roles"
+   },
+   {
+     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+     "scripts": [
+       "scripts/ubuntu/update.sh",
+       "scripts/ubuntu/minimize.sh",
+       "scripts/ubuntu/cleanup.sh"
+     ],
+     "type": "shell"
+   }
+ ]
+}

@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+
+  vars:
+    java_major_version: "8"
+    java_version: "8u6*"
+    java_flavor: "oracle"
+    java_oracle_accept_license_agreement: True
+
+  roles:
+    - { role: java }

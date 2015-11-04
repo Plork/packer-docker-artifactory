@@ -1,0 +1,25 @@
+{
+  "builders": [
+     {
+             "type": "docker",
+             "image": "ansible/ubuntu14.04-ansible:stable",
+             "export_path": "ubuntu1404-jre8.tar"
+     }
+ ],
+ "provisioners": [
+   {
+           "type": "ansible-local",
+           "playbook_file": "playbooks/java.yml",
+           "role_paths": "roles"
+   },
+   {
+     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+     "scripts": [
+       "scripts/ubuntu/update.sh",
+       "scripts/ubuntu/minimize.sh",
+       "scripts/ubuntu/cleanup.sh"
+     ],
+     "type": "shell"
+   }
+ ]
+}

@@ -1,0 +1,6 @@
+[submodule "roles/artifactory"]
+	path = roles/artifactory
+	url = https://github.com/Plork/ansible-role-artifactory.git
+[submodule "roles/java"]
+	path = roles/java
+	url = https://github.com/Plork/ansible-role-java.git
